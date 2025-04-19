@@ -1,0 +1,14 @@
+services:
+  train:
+    container_name: "LunarLanderContinuous-ActorCritic-pt"
+    build: .
+    tty: true
+    shm_size: "4gb"
+    volumes:
+      - ./:/workspace
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [utility, compute, video]
