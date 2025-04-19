@@ -120,4 +120,3 @@ def train():
 
 if __name__ == "__main__":
     train()
-    eval("checkpoints/checkpoint.pt")
