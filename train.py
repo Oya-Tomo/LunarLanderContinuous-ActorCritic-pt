@@ -11,9 +11,10 @@ from eval import eval
 
 @dataclass
 class TrainingConfig:
-    epochs: int = 1000
-    episodes_per_epoch: int = 50
+    epochs: int = 100000
+    episodes_per_epoch: int = 20
     max_steps_per_episode: int = 10000
+    soft_update_per_epoch: int = 10
     seed: int = 42
     random_start_steps: int = 60
 
@@ -33,7 +34,7 @@ def train():
     agent = ActorCriticModel(
         ModelConfig(
             lr=0.001,
-            gamma=0.80,
+            gamma=0.95,
             tau=0.01,
         ),
         device=device,
@@ -90,7 +91,9 @@ def train():
         )
 
         critic_loss, actor_loss = agent.update_parameters(dataloader)
-        agent.soft_update()
+
+        if epoch % training_config.soft_update_per_epoch == 0:
+            agent.soft_update()
 
         print(
             f"Epoch: {epoch}, "

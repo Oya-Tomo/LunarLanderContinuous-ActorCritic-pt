@@ -33,3 +33,7 @@ def eval(checkpoint: str):
             done = terminated or truncated
             if done:
                 break
+
+
+if __name__ == "__main__":
+    eval("checkpoints/checkpoint999.pt")
