@@ -1,3 +1,4 @@
+import os
 from dataclasses import dataclass
 
 import torch
@@ -20,6 +21,8 @@ class TrainingConfig:
 
 
 def train():
+    WANDB_API_KEY = os.environ.get("WANDB_API_KEY")
+    wandb.login(key=WANDB_API_KEY)
     wandb.init(project="LunarLanderContinuous-ActorCritic-pt")
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")

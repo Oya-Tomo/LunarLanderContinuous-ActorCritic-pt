@@ -6,6 +6,8 @@ services:
     shm_size: "4gb"
     volumes:
       - ./:/workspace
+    env_file:
+      - .env
     deploy:
       resources:
         reservations:
