@@ -48,4 +48,4 @@ class LunarLanderV3:
         return observation, reward, terminated, truncated, info
 
     def reset(self):
-        return self.env.reset(seed=42)
+        return self.env.reset()
