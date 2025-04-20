@@ -47,5 +47,12 @@ class LunarLanderV3:
 
         return observation, reward, terminated, truncated, info
 
+    def sample(self):
+        action = self.env.action_space.sample()
+        action = torch.tensor(action).float()
+        action = (action - self.action_min) / (self.action_max - self.action_min)
+        action = action * 2 - 1
+        return action
+
     def reset(self):
         return self.env.reset()
