@@ -52,7 +52,7 @@ class LunarLanderV3:
         action = torch.tensor(action).float()
         action = (action - self.action_min) / (self.action_max - self.action_min)
         action = action * 2 - 1
-        return action
+        return action.cpu().numpy()
 
     def reset(self):
         return self.env.reset()

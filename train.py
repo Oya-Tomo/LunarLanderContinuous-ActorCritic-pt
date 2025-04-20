@@ -87,8 +87,6 @@ def train():
                     action = env.sample()
                 else:
                     action = agent.select_action(torch.tensor(state).float().to(device))
-
-                action = agent.select_action(torch.tensor(state).float().to(device))
                 next_state, reward, terminated, truncated, info = env.step(action)
                 done = terminated or truncated
                 total_reward += reward
