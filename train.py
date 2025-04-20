@@ -61,7 +61,7 @@ def train():
 
             while not done and step < training_config.max_steps_per_episode:
                 if step < training_config.random_start_steps:
-                    action = env.env.action_space.sample()
+                    action = env.sample()
                 else:
                     action = agent.select_action(torch.tensor(state).float().to(device))
 
