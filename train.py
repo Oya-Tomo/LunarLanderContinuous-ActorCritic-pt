@@ -75,7 +75,7 @@ def train():
                     action,
                     reward,
                     next_state,
-                    float(done),
+                    float(not done),
                 )
 
                 state = next_state
