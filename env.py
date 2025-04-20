@@ -49,7 +49,7 @@ class LunarLanderV3:
 
     def sample(self):
         action = self.env.action_space.sample()
-        action = torch.tensor(action).float()
+        action = torch.tensor(action).float().to(self.device)
         action = (action - self.action_min) / (self.action_max - self.action_min)
         action = action * 2 - 1
         return action.cpu().numpy()
