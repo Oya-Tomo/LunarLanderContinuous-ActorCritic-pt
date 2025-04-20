@@ -50,6 +50,29 @@ def train():
         ),
     )
 
+    print("Filling dataset with random samples...")
+    while len(dataset) < 100000:
+        state, _ = env.reset()
+        done = False
+        step = 0
+
+        while not done and step < training_config.max_steps_per_episode:
+            action = env.sample()
+            next_state, reward, terminated, truncated, info = env.step(action)
+            done = terminated or truncated
+
+            dataset.add(
+                state,
+                action,
+                reward,
+                next_state,
+                float(not done),
+            )
+
+            state = next_state
+            step += 1
+
+    print("Starting training...")
     for epoch in range(training_config.epochs):
         total_reward_history = []
 
