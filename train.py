@@ -117,15 +117,12 @@ def train():
 
         print(
             f"Epoch: {epoch}, "
-            f"Episode: {episode}, "
             f"Critic Loss: {critic_loss:.8f}, "
             f"Actor Loss: {actor_loss:.8f}, "
             f"Total Reward Average: {sum(total_reward_history) / len(total_reward_history):.8f}"
         )
         wandb.log(
             {
-                "epoch": epoch,
-                "episode": episode,
                 "critic_loss": critic_loss,
                 "actor_loss": actor_loss,
                 "total_reward": sum(total_reward_history) / len(total_reward_history),
