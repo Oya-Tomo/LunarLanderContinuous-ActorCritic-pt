@@ -36,9 +36,9 @@ def train():
 
     agent = ActorCriticModel(
         ModelConfig(
-            lr=0.001,
-            gamma=0.95,
-            tau=0.01,
+            lr=0.01,
+            gamma=0.99,
+            tau=0.05,
         ),
         device=device,
         state_dim=env.observation_dim,
@@ -107,11 +107,7 @@ def train():
         dataset.periodic_delete()
         dataloader = create_dataloader(
             dataset,
-            DataloaderConfig(
-                batch_size=64,
-                shuffle=True,
-                num_workers=0,
-            ),
+            DataloaderConfig(),
         )
 
         critic_loss, actor_loss = agent.update_parameters(dataloader)
