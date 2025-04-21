@@ -36,4 +36,4 @@ def eval(checkpoint: str):
 
 
 if __name__ == "__main__":
-    eval("checkpoints/checkpoint5549.pt")
+    eval("checkpoints/checkpoint5729.pt")

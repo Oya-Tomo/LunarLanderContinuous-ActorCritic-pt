@@ -49,7 +49,7 @@ class ReplayDataset(Dataset):
 
 @dataclass
 class DataloaderConfig:
-    batch_size: int = 256
+    batch_size: int = 512
     shuffle: bool = True
     num_workers: int = 4
     pin_memory: bool = False
