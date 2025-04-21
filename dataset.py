@@ -6,7 +6,7 @@ from torch.utils.data import Dataset
 
 @dataclass
 class DatasetConfig:
-    max_size: int = 10000
+    max_size: int = 100000
 
 
 class ReplayDataset(Dataset):
@@ -49,7 +49,7 @@ class ReplayDataset(Dataset):
 
 @dataclass
 class DataloaderConfig:
-    batch_size: int = 64
+    batch_size: int = 256
     shuffle: bool = True
     num_workers: int = 4
     pin_memory: bool = False
